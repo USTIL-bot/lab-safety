@@ -14,10 +14,20 @@ const { allHasLearnt } = useLearnStore()
 </script>
 
 <template>
-  <ol>
+  <ul>
     <li v-for="[i, title] in contentsTitles.entries()" :key="i">
+      <input type="checkbox" :checked="allHasLearnt(i + 1)" @click.prevent="" />
       <RouterLink :to="`/learn/${i + 1}/1`">{{ title }}</RouterLink>
-      <div v-if="allHasLearnt(i + 1)">已学习</div>
     </li>
-  </ol>
+  </ul>
 </template>
+
+<style scoped>
+li {
+  list-style: none;
+}
+
+input {
+  margin-right: 0.75rem;
+}
+</style>
