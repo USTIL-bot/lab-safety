@@ -26,7 +26,7 @@ async function generate() {
     </main>
     <div class="date">{{ date }}</div>
   </div>
-  <button type="button" @click="generate">下载</button>
+  <button type="button" @click="generate">下载证书</button>
 </template>
 
 <style scoped>

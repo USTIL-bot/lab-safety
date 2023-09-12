@@ -10,16 +10,17 @@ const contentsTitles = [
   '实验室火灾安全逃生方法'
 ]
 
-const { allHasLearnt } = useLearnStore()
+const { hasLearnt, allHasLearnt } = useLearnStore()
 </script>
 
 <template>
   <ul>
     <li v-for="[i, title] in contentsTitles.entries()" :key="i">
-      <input type="checkbox" :checked="allHasLearnt(i + 1)" @click.prevent="" />
+      <input type="checkbox" :checked="hasLearnt(i + 1)" @click.prevent="" />
       <RouterLink :to="`/learn/${i + 1}/1`">{{ title }}</RouterLink>
     </li>
   </ul>
+  <RouterLink to="/award" role="button" v-if="!allHasLearnt()">生成证书</RouterLink>
 </template>
 
 <style scoped>

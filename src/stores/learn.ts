@@ -10,12 +10,16 @@ export const useLearnStore = defineStore('learn', () => {
     return learnt.value[id - 1].length
   }
 
-  function hasLearnt(id: number, page: number) {
-    return learnt.value[id - 1][page - 1]
+  function hasLearnt(id: number): boolean
+  function hasLearnt(id: number, page: number): boolean
+  function hasLearnt(id: number, page?: number) {
+    return page !== undefined
+      ? learnt.value[id - 1][page - 1]
+      : learnt.value[id - 1].every((status) => status)
   }
 
-  function allHasLearnt(id: number) {
-    return learnt.value[id - 1].every((status) => status)
+  function allHasLearnt() {
+    return learnt.value.flat().every((status) => status)
   }
 
   function check(id: number, page: number) {

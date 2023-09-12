@@ -1,3 +1,4 @@
+import { useLearnStore } from '@/stores/learn'
 import { useUserStore } from '@/stores/user'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
@@ -20,7 +21,13 @@ const router = createRouter({
     },
     {
       path: '/award',
-      component: () => import('../views/AwardView.vue')
+      component: () => import('../views/AwardView.vue'),
+      beforeEnter: () => {
+        const { allHasLearnt } = useLearnStore()
+        if (!allHasLearnt()) {
+          return '/learn'
+        }
+      }
     }
   ]
 })
