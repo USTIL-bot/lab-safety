@@ -20,7 +20,7 @@ const { hasLearnt, allHasLearnt } = useLearnStore()
       <RouterLink :to="`/learn/${i + 1}/1`">{{ title }}</RouterLink>
     </li>
   </ul>
-  <RouterLink to="/award" role="button" v-if="!allHasLearnt()">生成证书</RouterLink>
+  <RouterLink to="/award" role="button" v-if="allHasLearnt()">生成证书</RouterLink>
 </template>
 
 <style scoped>
