@@ -11,7 +11,7 @@ const id = ref(0)
 const page = ref(0)
 
 const content = ref('')
-const count = ref(0)
+const count = ref(10)
 const canFlip = computed(() => count.value === 0)
 
 const { pages, hasLearnt, check } = useLearnStore()
@@ -35,6 +35,7 @@ function finishLearning() {
 const router = useRouter()
 
 function toNextPage() {
+  count.value = 10
   if (page.value === pages(id.value)) {
     router.push('/learn')
   } else {
