@@ -4,8 +4,6 @@ import { ref } from 'vue'
 export const useLearnStore = defineStore('learn', () => {
   const learnt = ref(load())
 
-  // const length = computed(() => learnt.value.length)
-
   function pages(id: number) {
     return learnt.value[id - 1].length
   }
@@ -27,6 +25,11 @@ export const useLearnStore = defineStore('learn', () => {
     save()
   }
 
+  function clear() {
+    localStorage.removeItem('learn')
+    learnt.value = load()
+  }
+
   function save() {
     localStorage.setItem('learn', JSON.stringify(learnt.value))
   }
@@ -46,5 +49,5 @@ export const useLearnStore = defineStore('learn', () => {
     ]
   }
 
-  return { pages, hasLearnt, allHasLearnt, check }
+  return { pages, hasLearnt, allHasLearnt, check, clear }
 })

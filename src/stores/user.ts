@@ -15,10 +15,15 @@ export const useUserStore = defineStore('user', () => {
     localStorage.setItem('user', JSON.stringify({ id: id.value, name: name.value }))
   }
 
+  function clear() {
+    localStorage.removeItem('user')
+    ;({ id: id.value, name: name.value } = load())
+  }
+
   function load(): { id: string; name: string } {
     const userStorage = localStorage.getItem('user')
     return userStorage !== null ? JSON.parse(userStorage) : { id: '', name: '' }
   }
 
-  return { id, name, userIsEmpty, save }
+  return { id, name, userIsEmpty, save, clear }
 })
