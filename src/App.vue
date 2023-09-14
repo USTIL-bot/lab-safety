@@ -34,11 +34,11 @@ h3 > a {
 
 main {
   width: 100vw;
-  height: calc(100vh - 76.5px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 4rem;
 }
 
 .user {
