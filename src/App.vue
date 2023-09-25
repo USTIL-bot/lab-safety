@@ -45,10 +45,10 @@ function clear() {
         <h3 class="home-link"><RouterLink to="/">实验室安全培训</RouterLink></h3>
       </li>
     </ul>
-    <ul class="user">
-      <li>{{ id }}</li>
-      <li>{{ name }}</li>
-      <li v-if="!userIsEmpty()">
+    <ul v-if="!userIsEmpty()" class="user">
+      <li>学号：{{ id }}</li>
+      <li>姓名：{{ name }}</li>
+      <li>
         <a href="#" role="button" class="outline" @click="toggle">注销</a>
       </li>
     </ul>
@@ -66,6 +66,7 @@ function clear() {
   <main class="container">
     <RouterView />
   </main>
+  <img src="/images/sut-logo.png" />
 </template>
 
 <style scoped>
@@ -89,5 +90,61 @@ main {
 .warning {
   --primary: #dc2626;
   --primary-hover: #b91c1c;
+}
+
+img {
+  width: 20%;
+  opacity: 35%;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
+</style>
+
+<style>
+#app {
+  background-image: url(/images/bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Indigo Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme='light'],
+:root:not([data-theme='dark']) {
+  --primary: #3949ab;
+  --primary-hover: #303f9f;
+  --primary-focus: rgba(57, 73, 171, 0.125);
+  --primary-inverse: #fff;
+}
+
+/* Indigo Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #3949ab;
+    --primary-hover: #3f51b5;
+    --primary-focus: rgba(57, 73, 171, 0.25);
+    --primary-inverse: #fff;
+  }
+}
+
+/* Indigo Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme='dark'] {
+  --primary: #3949ab;
+  --primary-hover: #3f51b5;
+  --primary-focus: rgba(57, 73, 171, 0.25);
+  --primary-inverse: #fff;
+}
+
+/* Indigo (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
 }
 </style>

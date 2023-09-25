@@ -15,7 +15,7 @@ const { hasLearnt, allHasLearnt } = useLearnStore()
 
 <template>
   <ul>
-    <li v-for="[i, title] in contentsTitles.entries()" :key="i">
+    <li v-for="(title, i) in contentsTitles" :key="i">
       <input type="checkbox" :checked="hasLearnt(i + 1)" @click.prevent="" />
       <RouterLink :to="`/learn/${i + 1}/1`">{{ title }}</RouterLink>
     </li>
@@ -26,6 +26,7 @@ const { hasLearnt, allHasLearnt } = useLearnStore()
 <style scoped>
 li {
   list-style: none;
+  margin-bottom: 0.75rem;
 }
 
 input {
