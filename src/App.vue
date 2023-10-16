@@ -96,8 +96,35 @@ img {
   width: 20%;
   opacity: 35%;
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  right: 40%;
+  top: 136px;
+}
+
+@media screen and (min-width: 768px) {
+  img {
+    top: 97px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  img {
+    width: 15%;
+    right: 43%;
+    top: 131px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  img {
+    width: 10%;
+    right: 45%;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  img {
+    top: 51px;
+  }
 }
 </style>
 
